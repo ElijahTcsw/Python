@@ -17,7 +17,8 @@ def creategrid(width,height):
 def get1Dtile(x):
     for tile in range(0,9):
         screentile = 55 * tile
-        if screentile < x and screentile + 55 > x:
+        if screentile <= x and screentile + 55 >= x:
             return tile
+    return 8
 def findtile(mousex, mousey):
     return (get1Dtile(mousex),get1Dtile(mousey))
