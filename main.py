@@ -15,6 +15,7 @@ tile = pygame.image.load("tile.png")
 flag = pygame.image.load("flag.png")
 mine = pygame.image.load("mine.png")
 tileempty = pygame.image.load("tileempty.png")
+pygame.display.set_icon(mine)
 clock = 0
 while running:
     windowsurface.fill((0,0,0))
