@@ -5,7 +5,7 @@ flags = 6
 pygame.init()
 pygame.font.init()
 numberfont = pygame.font.Font("data-latin.ttf",40)
-windowsurface = pygame.display.set_mode((500, 500))
+windowsurface = pygame.display.set_mode((500, 545))
 pygame.display.set_caption("Minesweeper")
 running = True
 death = False
@@ -15,7 +15,9 @@ tile = pygame.image.load("tile.png")
 flag = pygame.image.load("flag.png")
 mine = pygame.image.load("mine.png")
 tileempty = pygame.image.load("tileempty.png")
+clock = 0
 while running:
+    windowsurface.fill((0,0,0))
     for tiley in range(0,9):
         for tilex in range(0, 9):
             if grid[tiley][tilex] == 1:
@@ -39,6 +41,10 @@ while running:
     if haswon:
         gameover = numberfont.render("You Won",False,(0, 255, 0))
         windowsurface.blit(gameover, (180, 220))
+    if not death and not haswon:
+        clock= pygame.time.get_ticks()/1000
+    timer = numberfont.render(str(clock),False, (0, 0, 255))
+    windowsurface.blit(timer, (0, 500))
     pygame.display.flip()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
